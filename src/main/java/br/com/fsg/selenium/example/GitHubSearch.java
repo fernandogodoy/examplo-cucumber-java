@@ -1,5 +1,8 @@
 package br.com.fsg.selenium.example;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +13,8 @@ public class GitHubSearch {
 	private WebDriver driver;
 
 	public GitHubSearch(String link) {
-		System.setProperty("webdriver.chrome.driver",
-				"D:\\workspaceFernando\\exemplo-cucumber-java\\src\\main\\resources\\win_chromedriver.exe");
+		Path path = Paths.get("src/main/resources/win_chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", path.toString());
 
 		driver = new ChromeDriver();
 		driver.get(link);
