@@ -1,34 +1,15 @@
 package br.com.fsg.selenium.example;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GitHubSearch {
-	
-	private static String OS = System.getProperty("os.name").toLowerCase();
 
 	private WebDriver driver;
-	private Path path;
 
 	public GitHubSearch(String link) {
-		switch (OS) {
-		case "windows 10":
-			path = Paths.get("src/main/resources/win_chromedriver.exe");
-			break;
-		default:
-			path = Paths.get("src/main/resources/lin_chromedriver");
-			break;
-		}
-		
-		
-		System.setProperty("webdriver.chrome.driver", path.toString());
-
-		driver = new ChromeDriver();
+		driver = ConfigureWebDriver.getWebDriverInstance();
 		driver.get(link);
 	}
 
